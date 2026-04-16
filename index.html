@@ -3,95 +3,349 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfólio de projetos da escola">
-    <title>Meu Portfólio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Ana Luiza - Portfólio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            color: white;
+            padding: 60px 20px;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+            transform: scale(1.05);
+        }
+
+        /* Sections */
+        section {
+            background: white;
+            margin: 30px 0;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section h2 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+        }
+
+        /* About Section */
+        #about p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            transition: 0.3s;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .project-card h3 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+
+        .project-card p {
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .skill-item {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .skill-item:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .skill-item h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .skill-item:hover h3 {
+            color: white;
+        }
+
+        /* Contact Section */
+        #contact {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        #contact h2 {
+            color: white;
+            border-bottom-color: white;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .contact-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .contact-link:hover {
+            background: rgba(255,255,255,0.4);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            section {
+                padding: 30px 20px;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+
+            .contact-info {
+                gap: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">Meu Portfólio</div>
-            <ul class="nav-links">
-                <li><a href="#home">Início</a></li>
-                <li><a href="#about">Sobre</a></li>
-                <li><a href="#projects">Projetos</a></li>
-                <li><a href="#skills">Habilidades</a></li>
-                <li><a href="#contact">Contato</a></li>
-            </ul>
-        </div>
+    <nav>
+        <ul>
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#projects">Projetos</a></li>
+            <li><a href="#skills">Habilidades</a></li>
+            <li><a href="#contact">Contato</a></li>
+        </ul>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <h1>Bem-vindo ao Meu Portfólio</h1>
-            <p>Conheça meus projetos e habilidades</p>
-        </div>
-    </section>
+    <!-- Header -->
+    <header>
+        <h1>Ana Luiza</h1>
+        <p>Portfólio de Projetos Escolares</p>
+    </header>
 
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container">
+    <div class="container">
+        <!-- About Section -->
+        <section id="about">
             <h2>Sobre Mim</h2>
-            <p>Olá! Eu sou um estudante apaixonado por programação e desenvolvimento web. Aqui você encontrará alguns dos meus melhores projetos escolares.</p>
-        </div>
-    </section>
+            <p>
+                Bem-vindo ao meu portfólio! Sou Ana Luiza, uma estudante apaixonada por tecnologia e inovação. 
+                Aqui você encontrará uma coleção dos meus melhores projetos escolares que demonstram minhas 
+                habilidades e dedicação no aprendizado contínuo.
+            </p>
+        </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="section">
-        <div class="container">
+        <!-- Projects Section -->
+        <section id="projects">
             <h2>Meus Projetos</h2>
             <div class="projects-grid">
                 <div class="project-card">
                     <h3>Projeto 1</h3>
-                    <p>Descrição do seu primeiro projeto</p>
-                    <a href="#" class="btn">Ver Projeto</a>
+                    <p>Descrição do seu primeiro projeto escola. Adicione detalhes sobre o que foi desenvolvido e as tecnologias utilizadas.</p>
                 </div>
                 <div class="project-card">
                     <h3>Projeto 2</h3>
-                    <p>Descrição do seu segundo projeto</p>
-                    <a href="#" class="btn">Ver Projeto</a>
+                    <p>Descrição do seu segundo projeto escola. Compartilhe suas conquistas e aprendizados durante o desenvolvimento.</p>
                 </div>
                 <div class="project-card">
                     <h3>Projeto 3</h3>
-                    <p>Descrição do seu terceiro projeto</p>
-                    <a href="#" class="btn">Ver Projeto</a>
+                    <p>Descrição do seu terceiro projeto escola. Destaque os desafios enfrentados e como você os resolveu.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Projeto 4</h3>
+                    <p>Descrição do seu quarto projeto escola. Explique o impacto e a relevância do projeto para seu aprendizado.</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section">
-        <div class="container">
+        <!-- Skills Section -->
+        <section id="skills">
             <h2>Habilidades</h2>
-            <div class="skills-grid">
-                <div class="skill">HTML</div>
-                <div class="skill">CSS</div>
-                <div class="skill">JavaScript</div>
-                <div class="skill">Responsivo</div>
+            <div class="skills-container">
+                <div class="skill-item">
+                    <h3>HTML & CSS</h3>
+                    <p>Desenvolvimento web frontend</p>
+                </div>
+                <div class="skill-item">
+                    <h3>JavaScript</h3>
+                    <p>Interatividade e lógica web</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Resolução de Problemas</h3>
+                    <p>Pensamento crítico e análise</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Trabalho em Equipe</h3>
+                    <p>Colaboração e comunicação</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Design</h3>
+                    <p>UI/UX e criatividade</p>
+                </div>
+                <div class="skill-item">
+                    <h3>Apresentação</h3>
+                    <p>Comunicação de ideias</p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h2>Contato</h2>
-            <p>Email: seu.email@exemplo.com</p>
-            <p>LinkedIn: <a href="#">Seu Perfil</a></p>
-            <p>GitHub: <a href="#">Seu Repositório</a></p>
-        </div>
-    </section>
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Entre em Contato</h2>
+            <p>Gostou do meu portfólio? Vamos conversar!</p>
+            <div class="contact-info">
+                <a href="mailto:seu.email@exemplo.com" class="contact-link">📧 Email</a>
+                <a href="#" class="contact-link">💼 LinkedIn</a>
+                <a href="#" class="contact-link">🐙 GitHub</a>
+            </div>
+        </section>
+    </div>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <p>&copy; 2026 Meu Portfólio. Todos os direitos reservados.</p>
-        </div>
+        <p>&copy; 2026 Ana Luiza. Todos os direitos reservados.</p>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
